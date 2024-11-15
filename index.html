@@ -1,1 +1,87 @@
-https://github.co.jp/
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="研究者のポートフォリオ">
+    <title>Research Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function setLanguage(lang) {
+            document.querySelectorAll('.lang').forEach(function(el) {
+                el.style.display = 'none';
+            });
+            document.querySelectorAll('.' + lang).forEach(function(el) {
+                el.style.display = 'block';
+            });
+        }
+    </script>
+</head>
+<body onload="setLanguage('ja')">
+
+    <header>
+        <h1 class="lang ja">Dr. Your Name</h1>
+        <h1 class="lang en" style="display: none;">Dr. Your Name</h1>
+        <p class="lang ja">研究分野: [Your Field]</p>
+        <p class="lang en" style="display: none;">Researcher in [Your Field]</p>
+
+        <!-- Language switch links -->
+        <nav>
+            <button onclick="setLanguage('ja')">日本語</button> |
+            <button onclick="setLanguage('en')">English</button>
+        </nav>
+    </header>
+
+    <section id="about">
+        <h2 class="lang ja">自己紹介</h2>
+        <h2 class="lang en" style="display: none;">About Me</h2>
+        <p class="lang ja">自己紹介文をここに記載します。現在の所属や専門分野、主な研究テーマについて簡潔に説明してください。</p>
+        <p class="lang en" style="display: none;">Write a brief introduction here, including your affiliation, field of expertise, and main research topics.</p>
+    </section>
+
+    <section id="research">
+        <h2 class="lang ja">研究内容</h2>
+        <h2 class="lang en" style="display: none;">Research</h2>
+        <p class="lang ja">研究内容の概要をここに記載します。どのような問題を解決しようとしているのか、研究の意義やアプローチについて述べます。</p>
+        <p class="lang en" style="display: none;">Provide an overview of your research, including the main problems you're addressing, the significance, and the approach you take.</p>
+    </section>
+
+    <section id="publications">
+        <h2 class="lang ja">論文一覧</h2>
+        <h2 class="lang en" style="display: none;">Publications</h2>
+        <ul class="lang ja">
+            <li>著者名. 論文タイトル. ジャーナル/会議名, 年.</li>
+            <li>著者名. 論文タイトル. ジャーナル/会議名, 年.</li>
+        </ul>
+        <ul class="lang en" style="display: none;">
+            <li>Author(s). Title of the Paper. Journal/Conference Name, Year.</li>
+            <li>Author(s). Title of the Paper. Journal/Conference Name, Year.</li>
+        </ul>
+    </section>
+
+    <section id="conferences">
+        <h2 class="lang ja">学会発表</h2>
+        <h2 class="lang en" style="display: none;">Conferences & Talks</h2>
+        <ul class="lang ja">
+            <li>学会名, 場所, 年. 発表タイトル.</li>
+        </ul>
+        <ul class="lang en" style="display: none;">
+            <li>Conference Name, Location, Year. Presentation Title.</li>
+        </ul>
+    </section>
+
+    <section id="teaching">
+        <h2 class="lang ja">教育活動</h2>
+        <h2 class="lang en" style="display: none;">Teaching</h2>
+        <p class="lang ja">担当している授業やセミナーなどについての情報をここに記載します。</p>
+        <p class="lang en" style="display: none;">Information about classes or seminars you are currently teaching.</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Dr. Your Name</p>
+        <p><a href="https://github.com/your-github-username">GitHub</a> | <a href="mailto:your-email@example.com">Email</a></p>
+    </footer>
+
+</body>
+</html>
+
