@@ -62,3 +62,36 @@ footer a {
 footer a:hover {
     text-decoration: underline;
 }
+
+.profile-img {
+    float: left; /* 画像を左端に寄せる */
+    max-width: 150px; /* 画像の幅を制限 */
+    margin-right: 1em; /* 画像とテキストの間に余白を追加 */
+    border-radius: 50%; /* 画像を丸くする（必要に応じて調整） */
+    margin-bottom: 1em; /* 画像の下にも余白を追加 */
+}
+
+.links {
+    clear: both; /* 浮動要素を解除 */
+    margin-top: 1em;
+    text-align: center;
+}
+
+.links a {
+    margin: 0 0.5em;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.links a:hover {
+    text-decoration: underline;
+}
+
+.name {
+    text-decoration: underline; /* 下線を引く */
+    font-weight: bold; /* 必要に応じて文字を太くする */
+}
+
+.cname {
+    font-weight: bold; /* 必要に応じて文字を太くする */
+}
