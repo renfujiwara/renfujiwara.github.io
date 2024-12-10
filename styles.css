@@ -13,7 +13,8 @@ body {
 
 /* Header styles */
 header {
-    background-color: #2d3e50; /* ヘッダーの背景色 */
+    background: #2d3e50;
+    color: #fff;
     padding: 1em;
     display: flex;
     align-items: center;
