@@ -69,6 +69,39 @@ ul {
     margin-left: 1.5em;
 }
 
+#publications {
+    margin-top: 2em;
+}
+
+.publication-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.publication-list li {
+    margin-bottom: 1.5em;
+}
+
+.pub-id {
+    font-weight: bold;
+    color: #333;
+    margin-right: 0.5em;
+}
+
+.conf {
+    font-style: italic;
+    color: #007bff; /* Link-like color */
+}
+
+a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
 footer {
     text-align: center;
     padding: 1em 0;
