@@ -1,161 +1,215 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" data-lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5BZ2PWSCZK"></script>
-    <script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="個人ホームページ">
+  <title>Ren Fujiwara's Homepage</title>
+
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Option: 速度優先ならGAを遅延ロード（初期表示を先に） -->
+  <script>
+    (function () {
+      const GA_ID = "G-5BZ2PWSCZK";
+
+      function loadGA() {
+        const s = document.createElement("script");
+        s.async = true;
+        s.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(GA_ID);
+        document.head.appendChild(s);
+
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-5BZ2PWSCZK');
-    </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="個人ホームページ">
-    <title>Ren Fujiwara's Homepage</title>
-    <link rel="stylesheet" href="styles.css">
-    <script>
-        function setLanguage(lang) {
-            document.querySelectorAll('.lang').forEach(function(el) {
-                el.style.display = 'none';
-            });
-            document.querySelectorAll('.' + lang).forEach(function(el) {
-                el.style.display = 'block';
-            });
-        }
-    </script>
+        window.gtag = function(){ dataLayer.push(arguments); };
+        gtag("js", new Date());
+        gtag("config", GA_ID);
+      }
+
+      if ("requestIdleCallback" in window) {
+        requestIdleCallback(loadGA, { timeout: 2000 });
+      } else {
+        setTimeout(loadGA, 1500);
+      }
+    })();
+  </script>
 </head>
-<body onload="setLanguage('en')">
 
-    <header>
-        <div class="header-container">
-            <img src="web.jpg" alt="Ren Fujiwara" class="header-img">
-            <div class="header-text">
-                <h1 class="lang en">Ren Fujiwara</h1>
-                <h1 class="lang ja" style="display: none;">藤原　廉</h1>
-                <nav>
-                    <button onclick="setLanguage('en')">English</button> |
-                    <button onclick="setLanguage('ja')">日本語</button>
-                </nav>
-            </div>
-            <!-- Language switch links -->
-        </div>
-    </header>
+<body>
+  <header class="site-header">
+    <div class="header-container">
+      <!-- 可能なら web.jpg → web.webp に変換推奨 -->
+      <img
+        src="web.webp"
+        alt="Ren Fujiwara"
+        class="header-img"
+        width="200"
+        height="130"
+        decoding="async"
+      >
 
+      <div class="header-text">
+        <h1 class="lang en">Ren Fujiwara</h1>
+        <h1 class="lang ja">藤原　廉</h1>
+
+        <nav class="lang-switch" aria-label="Language">
+          <button type="button" class="lang-btn" data-set-lang="en" aria-pressed="true">English</button>
+          <button type="button" class="lang-btn" data-set-lang="ja" aria-pressed="false">日本語</button>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="content">
     <section id="About">
-        <h2 class="lang en">About Me</h2>
-        <h2 class="lang ja" style="display: none;">自己紹介</h2>
-        <p class="lang en">I am a Ph.D. student at the Sakurai & Matsubara Lab in SANKEN, Osaka University.
-        I am working on data mining using machine learning, particularly interested in time-series analysis through dynamical systems.</p>
-        <p class="lang ja" style="display: none;">大阪大学産業科学研究所内の櫻井・松原研究室所属のPh.D. studentです。
-        機械学習を用いたデータマイニングに取り組んでおり、特に動的システムを用いた時系列解析に興味を持っています。</p>
-        <p>Email: r-fujiwr88&#9743sanken.osaka-u.ac.jp (Please replace &#9743 with @)</p>
+      <h2 class="lang en">About Me</h2>
+      <h2 class="lang ja">自己紹介</h2>
+
+      <p class="lang en">
+        I am a Ph.D. student at the Sakurai &amp; Matsubara Lab in SANKEN, Osaka University.
+        I am working on data mining using machine learning, particularly interested in time-series analysis through dynamical systems.
+      </p>
+
+      <p class="lang ja">
+        大阪大学産業科学研究所内の櫻井・松原研究室所属のPh.D. studentです。
+        機械学習を用いたデータマイニングに取り組んでおり、特に動的システムを用いた時系列解析に興味を持っています。
+      </p>
+
+      <p>Email: r-fujiwr88&#9743sanken.osaka-u.ac.jp (Please replace &#9743 with @)</p>
     </section>
 
     <section id="Publications">
-        <h2 class="lang en">Publications</h2>
-        <h2 class="lang ja" style="display: none;">論文一覧</h2>
-        <ul class="publication-list">
-            <li>
-                <span class="pub-id">[C4]</span>
-                <strong>Multi-Aspect Mining and Anomaly Detection for Heterogeneous Tensor Streams</strong><br>
-                Soshi Kakio, Yasuko Matsubara, <u>Ren Fujiwara</u>, and Yasushi Sakurai<br>
-                <span class="conf">
-                    WebConf 2026<br>
-                </span> [
-                <a href="#">paper</a> | 
-                <a href="#">slides</a> | 
-                <a href="#">poster</a> | 
-                <a href="#">code and datasets</a> | 
-                <a href="#">bib</a>
-                ]
-            </li>
-            <li>
-                <span class="pub-id">[C3]</span>
-                <strong>Modeling Latent Non-Linear Dynamical System over Time Series</strong><br>
-                <u>Ren Fujiwara</u>, Yasuko Matsubara and Yasushi Sakurai<br>
-                <span class="conf">
-                    AAAI 2025, selected as oral presentation (600/12957)<br>
-                </span> [
-                <a href="https://arxiv.org/abs/2412.08114">paper</a> | 
-                <a href="https://speakerdeck.com/renfujiwara/modeling-latent-non-linear-dynamical-system-over-time-series">slides</a> | 
-                <a href="#">poster</a> | 
-                <a href="https://github.com/renfujiwara/LaNoLem">code and datasets</a> | 
-                <a href="https://dblp.org/rec/conf/aaai/FujiwaraMS25.html?view=bibtex">bib</a>
-                ]
-            </li>
-            <li>
-                <span class="pub-id">[C2]</span>
-                <strong>Modeling Time-evolving Causality over Data Streams</strong><br>
-                Naoki Chihara, Yasuko Matsubara, <u>Ren Fujiwara</u>, and Yasushi Sakurai<br>
-                <span class="conf">
-                    KDD 2025<br>
-                </span> [
-                <a href="https://arxiv.org/abs/2502.08963">paper</a> | 
-                <a href="#">slides</a> | 
-                <a href="#">poster</a> | 
-                <a href="#">code and datasets</a> | 
-                <a href="#">bib</a>
-                ]
-            </li>
-            <li>
-                <span class="pub-id">[C1]</span>
-                <strong>C-Cast: A Real-Time Forecasting Model for a Controlled Sequence</strong><br>
-                <u>Ren Fujiwara</u>, Yasuko Matsubara and Yasushi Sakurai<br>
-                <span class="conf">
-                    CIKM 2022 (PhD Symposium)<br>
-                </span> [
-                <a href="https://dl.acm.org/doi/10.1145/3511808.3557817">paper</a> | 
-                <a href="#">slides</a> | 
-                <a href="#">poster</a> | 
-                <a href="#">code and datasets</a> | 
-                <a href="https://dblp.uni-trier.de/rec/conf/cikm/Fujiwara22.html?view=bibtex">bib</a>
-                ]
-            </li>
-        </ul>
+      <h2 class="lang en">Publications</h2>
+      <h2 class="lang ja">論文一覧</h2>
+
+      <ul class="publication-list">
+        <li>
+          <span class="pub-id">[C4]</span>
+          <strong>Multi-Aspect Mining and Anomaly Detection for Heterogeneous Tensor Streams</strong><br>
+          Soshi Kakio, Yasuko Matsubara, <u>Ren Fujiwara</u>, and Yasushi Sakurai<br>
+          <span class="conf">WebConf 2026</span> [
+          <a href="#">paper</a> |
+          <a href="#">slides</a> |
+          <a href="#">poster</a> |
+          <a href="#">code and datasets</a> |
+          <a href="#">bib</a>
+          ]
+        </li>
+
+        <li>
+          <span class="pub-id">[C3]</span>
+          <strong>Modeling Latent Non-Linear Dynamical System over Time Series</strong><br>
+          <u>Ren Fujiwara</u>, Yasuko Matsubara and Yasushi Sakurai<br>
+          <span class="conf">AAAI 2025, selected as oral presentation (600/12957)</span> [
+          <a href="https://arxiv.org/abs/2412.08114" rel="noopener">paper</a> |
+          <a href="https://speakerdeck.com/renfujiwara/modeling-latent-non-linear-dynamical-system-over-time-series" rel="noopener">slides</a> |
+          <a href="#" rel="noopener">poster</a> |
+          <a href="https://github.com/renfujiwara/LaNoLem" rel="noopener">code and datasets</a> |
+          <a href="https://dblp.org/rec/conf/aaai/FujiwaraMS25.html?view=bibtex" rel="noopener">bib</a>
+          ]
+        </li>
+
+        <li>
+          <span class="pub-id">[C2]</span>
+          <strong>Modeling Time-evolving Causality over Data Streams</strong><br>
+          Naoki Chihara, Yasuko Matsubara, <u>Ren Fujiwara</u>, and Yasushi Sakurai<br>
+          <span class="conf">KDD 2025</span> [
+          <a href="https://arxiv.org/abs/2502.08963" rel="noopener">paper</a> |
+          <a href="#">slides</a> |
+          <a href="#">poster</a> |
+          <a href="#">code and datasets</a> |
+          <a href="#">bib</a>
+          ]
+        </li>
+
+        <li>
+          <span class="pub-id">[C1]</span>
+          <strong>C-Cast: A Real-Time Forecasting Model for a Controlled Sequence</strong><br>
+          <u>Ren Fujiwara</u>, Yasuko Matsubara and Yasushi Sakurai<br>
+          <span class="conf">CIKM 2022 (PhD Symposium)</span> [
+          <a href="https://dl.acm.org/doi/10.1145/3511808.3557817" rel="noopener">paper</a> |
+          <a href="#">slides</a> |
+          <a href="#">poster</a> |
+          <a href="#">code and datasets</a> |
+          <a href="https://dblp.uni-trier.de/rec/conf/cikm/Fujiwara22.html?view=bibtex" rel="noopener">bib</a>
+          ]
+        </li>
+      </ul>
     </section>
 
     <section id="Biography">
-        <h2 class="lang en">Education</h2>
-        <ul class="lang en">
-            <li> 2024/4 - present JSPS research fellow, DC2, Supervisor: Prof. Yasushi Sakurai </li>
-            <li> 2023/4 - present Ph.D student, Graduate School of Information Science and Technology, Information Systems Engineering, Osaka University.</li>
-            <li> 2021/4 - 2023/3 Master's student, Graduate School of Information Science and Technology,
-                Information Systems Engineering, Osaka University.</li>
-            <li> 2017/4 - 2021/3 Bachelor's student, Department of Information and Computer Sciences, School of Engineering Science, Osaka University. </li>
-        </ul>
-        <h2 class="lang ja" style="display: none;">略歴</h2>
-        <ul class="lang ja" style="display: none;">
-            <li> 2024/4 - 現在 日本学術振興会特別研究員 DC2 </li>
-            <li> 2023/4 - 現在 大阪大学大学院 情報科学研究科 情報システム工学専攻 博士後期課程.</li>
-            <li> 2021/4 - 2023/3 大阪大学大学院 情報科学研究科 情報システム工学専攻 博士前期課程 修了.</li>
-            <li> 2021/8 - 現在 大阪大学産業科学研究所 特任研究員</li>
-            <li> 2017/4 - 2021/3 大阪大学 基礎工学部 情報科学科 卒業.</li>
-            <li> 2013/4 - 2016/3 大阪府立高津高等学校 文理学科 卒業.</li>
-        </ul>
+      <h2 class="lang en">Education</h2>
+      <h2 class="lang ja">略歴</h2>
+
+      <ul class="lang en">
+        <li>2024/4 - present JSPS research fellow, DC2, Supervisor: Prof. Yasushi Sakurai</li>
+        <li>2023/4 - present Ph.D student, Graduate School of Information Science and Technology, Information Systems Engineering, Osaka University.</li>
+        <li>2021/4 - 2023/3 Master's student, Graduate School of Information Science and Technology, Information Systems Engineering, Osaka University.</li>
+        <li>2017/4 - 2021/3 Bachelor's student, Department of Information and Computer Sciences, School of Engineering Science, Osaka University.</li>
+      </ul>
+
+      <ul class="lang ja">
+        <li>2024/4 - 現在 日本学術振興会特別研究員 DC2</li>
+        <li>2023/4 - 現在 大阪大学大学院 情報科学研究科 情報システム工学専攻 博士後期課程.</li>
+        <li>2021/4 - 2023/3 大阪大学大学院 情報科学研究科 情報システム工学専攻 博士前期課程 修了.</li>
+        <li>2021/8 - 現在 大阪大学産業科学研究所 特任研究員</li>
+        <li>2017/4 - 2021/3 大阪大学 基礎工学部 情報科学科 卒業.</li>
+        <li>2013/4 - 2016/3 大阪府立高津高等学校 文理学科 卒業.</li>
+      </ul>
     </section>
 
     <section id="Awards/Grants">
-        <h2 class="lang en">Awards/Grants</h2>
-        <ul class="lang en">
-            <li> 2023/4 - 2024/3 Osaka University fellowship for cross-disciplinary innovation </li>
-            <li> 2023/7 Japan Student Services Organization (JASSO) Student Loan, Exemption </li>
-            <li> 2022/10 SIGIR student travel grants for CIKM 2022 </li>
-        </ul>
-        <h2 class="lang ja" style="display: none;">受賞/研究資金</h2>
-        <ul class="lang ja" style="display: none;">
-            <li> 2024/3 DEIM2024 優秀論文賞 </li>
-            <li> 2023/4 - 2024/3 分野横断イノベーションを創造する情報人材育成フェローシップ </li>
-            <li> 2023/7 JASSO 特に優れた業績による返還免除 </li>
-            <li> 2023/3 DEIM2023 学生プレゼンテーション賞 </li>
-            <li> 2022/10 SIGIR student travel grants for CIKM 2022 </li>
-        </ul>
+      <h2 class="lang en">Awards/Grants</h2>
+      <h2 class="lang ja">受賞/研究資金</h2>
+
+      <ul class="lang en">
+        <li>2023/4 - 2024/3 Osaka University fellowship for cross-disciplinary innovation</li>
+        <li>2023/7 Japan Student Services Organization (JASSO) Student Loan, Exemption</li>
+        <li>2022/10 SIGIR student travel grants for CIKM 2022</li>
+      </ul>
+
+      <ul class="lang ja">
+        <li>2024/3 DEIM2024 優秀論文賞</li>
+        <li>2023/4 - 2024/3 分野横断イノベーションを創造する情報人材育成フェローシップ</li>
+        <li>2023/7 JASSO 特に優れた業績による返還免除</li>
+        <li>2023/3 DEIM2023 学生プレゼンテーション賞</li>
+        <li>2022/10 SIGIR student travel grants for CIKM 2022</li>
+      </ul>
     </section>
+  </main>
 
-    <footer>
-        <p>&copy; 2024 Ren Fujiwara</p>
-        <p><a href="https://github.com/renfujiwara">GitHub</a> | <a href="https://www.linkedin.com/in/ren-fujiwara-a9967a2a0/">LinkedIn</a></p>
-    </footer>
+  <footer class="site-footer">
+    <p>&copy; 2024 Ren Fujiwara</p>
+    <p>
+      <a href="https://github.com/renfujiwara" rel="noopener">GitHub</a> |
+      <a href="https://www.linkedin.com/in/ren-fujiwara-a9967a2a0/" rel="noopener">LinkedIn</a>
+    </p>
+  </footer>
 
+  <!-- 言語切替JS：HTML属性を1つ変えるだけ -->
+  <script>
+    (function () {
+      const root = document.documentElement;
+      const buttons = document.querySelectorAll("[data-set-lang]");
+
+      const saved = localStorage.getItem("lang");
+      setLang(saved || root.dataset.lang || "en");
+
+      document.addEventListener("click", (e) => {
+        const btn = e.target.closest("[data-set-lang]");
+        if (!btn) return;
+        setLang(btn.dataset.setLang);
+      });
+
+      function setLang(lang) {
+        root.dataset.lang = lang;
+        root.lang = lang;
+        localStorage.setItem("lang", lang);
+
+        buttons.forEach((b) => {
+          b.setAttribute("aria-pressed", String(b.dataset.setLang === lang));
+        });
+      }
+    })();
+  </script>
 </body>
 </html>
