@@ -47,8 +47,8 @@ html[data-lang="ja"] .lang.ja { display: block; }
 }
 
 .header-img {
-  width: 80px;
-  height: 100px;
+  width: 96px;
+  height: 120px;
   border-radius: 50%;
   border: 2px solid rgba(255,255,255,0.35);
 }
@@ -137,7 +137,7 @@ ul {
     align-items: flex-start;
   }
   .header-img {
-    width: 84px;
-    height: 84px;
+    width: 72px;
+    height: 90px;
   }
 }
