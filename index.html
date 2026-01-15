@@ -4,47 +4,26 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="個人ホームページ">
+  <meta name="color-scheme" content="light dark">
   <title>Ren Fujiwara's Homepage</title>
 
+  <!-- Preload above-the-fold image to speed up LCP -->
+  <link rel="preload" as="image" href="web.webp" fetchpriority="high">
+
   <link rel="stylesheet" href="styles.css">
-
-  <!-- Option: 速度優先ならGAを遅延ロード（初期表示を先に） -->
-  <script>
-    (function () {
-      const GA_ID = "G-5BZ2PWSCZK";
-
-      function loadGA() {
-        const s = document.createElement("script");
-        s.async = true;
-        s.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(GA_ID);
-        document.head.appendChild(s);
-
-        window.dataLayer = window.dataLayer || [];
-        window.gtag = function(){ dataLayer.push(arguments); };
-        gtag("js", new Date());
-        gtag("config", GA_ID);
-      }
-
-      if ("requestIdleCallback" in window) {
-        requestIdleCallback(loadGA, { timeout: 2000 });
-      } else {
-        setTimeout(loadGA, 1500);
-      }
-    })();
-  </script>
 </head>
 
 <body>
   <header class="site-header">
     <div class="header-container">
-      <!-- 可能なら web.jpg → web.webp に変換推奨 -->
       <img
         src="web.webp"
         alt="Ren Fujiwara"
         class="header-img"
-        width="105"
-        height="140"
+        width="96"
+        height="128"
         decoding="async"
+        fetchpriority="high"
       >
 
       <div class="header-text">
@@ -100,11 +79,11 @@
           <strong>Modeling Latent Non-Linear Dynamical System over Time Series</strong><br>
           <u>Ren Fujiwara</u>, Yasuko Matsubara and Yasushi Sakurai<br>
           <span class="conf">AAAI 2025, selected as oral presentation (600/12957)</span> [
-          <a href="https://arxiv.org/abs/2412.08114" rel="noopener">paper</a> |
-          <a href="https://speakerdeck.com/renfujiwara/modeling-latent-non-linear-dynamical-system-over-time-series" rel="noopener">slides</a> |
-          <a href="#" rel="noopener">poster</a> |
-          <a href="https://github.com/renfujiwara/LaNoLem" rel="noopener">code and datasets</a> |
-          <a href="https://dblp.org/rec/conf/aaai/FujiwaraMS25.html?view=bibtex" rel="noopener">bib</a>
+          <a href="https://arxiv.org/abs/2412.08114">paper</a> |
+          <a href="https://speakerdeck.com/renfujiwara/modeling-latent-non-linear-dynamical-system-over-time-series">slides</a> |
+          <a href="#">poster</a> |
+          <a href="https://github.com/renfujiwara/LaNoLem">code and datasets</a> |
+          <a href="https://dblp.org/rec/conf/aaai/FujiwaraMS25.html?view=bibtex">bib</a>
           ]
         </li>
 
@@ -113,7 +92,7 @@
           <strong>Modeling Time-evolving Causality over Data Streams</strong><br>
           Naoki Chihara, Yasuko Matsubara, <u>Ren Fujiwara</u>, and Yasushi Sakurai<br>
           <span class="conf">KDD 2025</span> [
-          <a href="https://arxiv.org/abs/2502.08963" rel="noopener">paper</a> |
+          <a href="https://arxiv.org/abs/2502.08963">paper</a> |
           <a href="#">slides</a> |
           <a href="#">poster</a> |
           <a href="#">code and datasets</a> |
@@ -126,11 +105,11 @@
           <strong>C-Cast: A Real-Time Forecasting Model for a Controlled Sequence</strong><br>
           <u>Ren Fujiwara</u>, Yasuko Matsubara and Yasushi Sakurai<br>
           <span class="conf">CIKM 2022 (PhD Symposium)</span> [
-          <a href="https://dl.acm.org/doi/10.1145/3511808.3557817" rel="noopener">paper</a> |
+          <a href="https://dl.acm.org/doi/10.1145/3511808.3557817">paper</a> |
           <a href="#">slides</a> |
           <a href="#">poster</a> |
           <a href="#">code and datasets</a> |
-          <a href="https://dblp.uni-trier.de/rec/conf/cikm/Fujiwara22.html?view=bibtex" rel="noopener">bib</a>
+          <a href="https://dblp.uni-trier.de/rec/conf/cikm/Fujiwara22.html?view=bibtex">bib</a>
           ]
         </li>
       </ul>
@@ -180,12 +159,12 @@
   <footer class="site-footer">
     <p>&copy; 2024 Ren Fujiwara</p>
     <p>
-      <a href="https://github.com/renfujiwara" rel="noopener">GitHub</a> |
-      <a href="https://www.linkedin.com/in/ren-fujiwara-a9967a2a0/" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/renfujiwara">GitHub</a> |
+      <a href="https://www.linkedin.com/in/ren-fujiwara-a9967a2a0/">LinkedIn</a>
     </p>
   </footer>
 
-  <!-- 言語切替JS：HTML属性を1つ変えるだけ -->
+  <!-- 言語切替JS：HTML属性を1つ変えるだけ（最小処理） -->
   <script>
     (function () {
       const root = document.documentElement;
@@ -205,9 +184,41 @@
         root.lang = lang;
         localStorage.setItem("lang", lang);
 
-        buttons.forEach((b) => {
+        for (const b of buttons) {
           b.setAttribute("aria-pressed", String(b.dataset.setLang === lang));
-        });
+        }
+      }
+    })();
+  </script>
+
+  <!-- Google Analytics: 初期描画を優先するため末尾で遅延ロード -->
+  <script>
+    (function () {
+      const GA_ID = "G-5BZ2PWSCZK";
+      const ORIGIN = "https://www.googletagmanager.com";
+
+      // 3rd-party 接続を事前に確立（DNS/TLS）
+      const preconnect = document.createElement("link");
+      preconnect.rel = "preconnect";
+      preconnect.href = ORIGIN;
+      document.head.appendChild(preconnect);
+
+      function loadGA() {
+        const s = document.createElement("script");
+        s.async = true;
+        s.src = ORIGIN + "/gtag/js?id=" + encodeURIComponent(GA_ID);
+        document.head.appendChild(s);
+
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function(){ dataLayer.push(arguments); };
+        gtag("js", new Date());
+        gtag("config", GA_ID, { anonymize_ip: true });
+      }
+
+      if ("requestIdleCallback" in window) {
+        requestIdleCallback(loadGA, { timeout: 2000 });
+      } else {
+        setTimeout(loadGA, 1500);
       }
     })();
   </script>
