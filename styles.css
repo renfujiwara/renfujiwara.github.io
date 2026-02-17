@@ -39,6 +39,13 @@ ul{list-style:square;margin-left:1.25rem}
 .pub-id{font-weight:700}
 .conf{font-style:italic;color:var(--link)}
 
+h3{color:var(--text);font-size:1.6rem;border-bottom:2px solid rgba(0,0,0,.6);padding-bottom:.25rem;margin-bottom:.75rem}
+ul{list-style:square;margin-left:1.25rem}
+.publication-list{list-style:none;margin-left:0}
+.publication-list li{margin-bottom:1rem}
+.pub-id{font-weight:700}
+.conf{font-style:italic;color:var(--link)}
+
 .site-footer{text-align:center;padding:1rem 0;background:var(--header);color:#fff}
 .site-footer a{color:#fff;margin:0 .5rem}
 
