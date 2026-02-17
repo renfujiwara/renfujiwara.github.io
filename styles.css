@@ -32,6 +32,17 @@ section{padding:1.25rem 0;border-bottom:1px solid rgba(0,0,0,.08)}
 }
 section:last-child{border-bottom:none}
 
+.publication-list {
+  list-style: none; /* これでドットが消えます */
+  padding-left: 0;   /* 左側の余白を詰めます */
+  margin-left: 0;
+}
+
+.publication-list li {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
 h2{color:var(--text);font-size:1.6rem;border-bottom:2px solid rgba(0,0,0,.6);padding-bottom:.25rem;margin-bottom:.75rem}
 ul{list-style:square;margin-left:1.25rem}
 .publication-list{list-style:none;margin-left:0}
