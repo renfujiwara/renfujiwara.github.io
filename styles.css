@@ -50,7 +50,7 @@ ul{list-style:square;margin-left:1.25rem}
 .pub-id{font-weight:700}
 .conf{font-style:italic;color:var(--link)}
 
-h3{color:var(--text);font-size:1.6rem;border-bottom:2px solid rgba(0,0,0,.6);padding-bottom:.25rem;margin-bottom:.75rem}
+h3{color:var(--text);font-size:1.2rem;border-bottom:2px solid rgba(0,0,0,.6);padding-bottom:.25rem;margin-bottom:.75rem}
 ul{list-style:square;margin-left:1.25rem}
 .publication-list{list-style:none;margin-left:0}
 .publication-list li{margin-bottom:1rem}
