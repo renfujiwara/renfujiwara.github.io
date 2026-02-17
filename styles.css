@@ -43,19 +43,23 @@ section:last-child{border-bottom:none}
   position: relative;
 }
 
-h2{color:var(--text);font-size:1.6rem;border-bottom:2px solid rgba(0,0,0,.6);padding-bottom:.25rem;margin-bottom:.75rem}
-ul{list-style:square;margin-left:1.25rem}
-.publication-list{list-style:none;margin-left:0}
-.publication-list li{margin-bottom:1rem}
-.pub-id{font-weight:700}
-.conf{font-style:italic;color:var(--link)}
+h2 {
+  color: var(--text);
+  font-size: 1.6rem; /* 大きめ */
+  border-bottom: 2px solid rgba(0,0,0,0.6); /* 太い下線 */
+  padding-bottom: 0.25rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
 
-h3{color:var(--text);font-size:1.2rem;border-bottom:2px solid rgba(0,0,0,.6);padding-bottom:.25rem;margin-bottom:.75rem}
-ul{list-style:square;margin-left:1.25rem}
-.publication-list{list-style:none;margin-left:0}
-.publication-list li{margin-bottom:1rem}
-.pub-id{font-weight:700}
-.conf{font-style:italic;color:var(--link)}
+h3 {
+  color: var(--text);
+  font-size: 1.25rem; /* h2より少し小さく */
+  border-bottom: 1px solid rgba(0,0,0,0.3); /* 下線を細く、薄くする */
+  padding-bottom: 0.1rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
 
 .site-footer{text-align:center;padding:1rem 0;background:var(--header);color:#fff}
 .site-footer a{color:#fff;margin:0 .5rem}
