@@ -32,6 +32,23 @@
 
         <!-- 外部プロフィールへのリンク（アイコンはインラインSVG、外部読み込みなし） -->
         <nav class="social-links" aria-label="Profiles">
+          <!-- researchmap：表示言語に応じて英語版/日本語版のURLを出し分け（.lang クラスで切替） -->
+          <a class="lang en" href="https://researchmap.jp/ren_fujiwara?lang=en" target="_blank" rel="noopener noreferrer">
+            <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M12 3 2 8l10 5 10-5-10-5z"/>
+              <path d="M6 10.8V15c0 1.7 2.7 3.5 6 3.5s6-1.8 6-3.5v-4.2l-6 3-6-3z"/>
+              <path d="M21 9v6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+            <span>researchmap</span>
+          </a>
+          <a class="lang ja" href="https://researchmap.jp/ren_fujiwara" target="_blank" rel="noopener noreferrer">
+            <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M12 3 2 8l10 5 10-5-10-5z"/>
+              <path d="M6 10.8V15c0 1.7 2.7 3.5 6 3.5s6-1.8 6-3.5v-4.2l-6 3-6-3z"/>
+              <path d="M21 9v6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+            <span>researchmap</span>
+          </a>
           <a href="https://github.com/renfujiwara" target="_blank" rel="noopener noreferrer">
             <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
               <circle cx="6" cy="4" r="2.2"/>
@@ -47,17 +64,6 @@
               <path d="M3 12.5h18" fill="none" stroke="var(--header)" stroke-width="1.4"/>
             </svg>
             <span>LinkedIn</span>
-          </a>
-          <a href="https://researchmap.jp/ren_fujiwara"
-             data-href-en="https://researchmap.jp/ren_fujiwara?lang=en"
-             data-href-ja="https://researchmap.jp/ren_fujiwara"
-             target="_blank" rel="noopener noreferrer">
-            <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-              <path d="M12 3 2 8l10 5 10-5-10-5z"/>
-              <path d="M6 10.8V15c0 1.7 2.7 3.5 6 3.5s6-1.8 6-3.5v-4.2l-6 3-6-3z"/>
-              <path d="M21 9v6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-            </svg>
-            <span>researchmap</span>
           </a>
         </nav>
       </div>
@@ -287,8 +293,6 @@
     (function () {
       const root = document.documentElement;
       const buttons = document.querySelectorAll("[data-set-lang]");
-      // 言語ごとにURLが異なるリンク（researchmap など）
-      const langLinks = document.querySelectorAll("a[data-href-en][data-href-ja]");
 
       const saved = localStorage.getItem("lang");
       setLang(saved || root.dataset.lang || "en");
@@ -306,10 +310,6 @@
 
         for (const b of buttons) {
           b.setAttribute("aria-pressed", String(b.dataset.setLang === lang));
-        }
-
-        for (const a of langLinks) {
-          a.href = lang === "ja" ? a.dataset.hrefJa : a.dataset.hrefEn;
         }
       }
     })();
