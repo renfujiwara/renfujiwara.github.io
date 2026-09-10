@@ -28,6 +28,10 @@ html[data-lang="ja"] .lang.ja{display:block}
   border:1px solid rgba(255,255,255,.3);
   color:#fff;font-size:.9rem;line-height:1;
 }
+/* 言語別リンク（.lang.en / .lang.ja）：非表示側は隠し、表示側は block ではなく inline-flex にする */
+.social-links .lang{display:none}
+html[data-lang="en"] .social-links .lang.en,
+html[data-lang="ja"] .social-links .lang.ja{display:inline-flex}
 .social-links a:hover,.social-links a:focus-visible{background:rgba(255,255,255,.15);text-decoration:none}
 .social-icon{width:1em;height:1em;fill:currentColor;flex:none}
 
