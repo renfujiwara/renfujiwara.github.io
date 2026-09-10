@@ -19,7 +19,19 @@ html[data-lang="ja"] .lang.ja{display:block}
   border:2px solid rgba(255,255,255,.35);
 }
 .header-text h1{font-size:1.5rem}
-.lang-switch{display:flex;gap:.5rem;margin-top:.5rem}
+
+/* ヘッダー内の外部プロフィールリンク（GitHub / LinkedIn / researchmap） */
+.social-links{display:flex;flex-wrap:wrap;gap:.4rem .6rem;margin-top:.5rem}
+.social-links a{
+  display:inline-flex;align-items:center;gap:.35rem;
+  padding:.3rem .6rem;border-radius:.4rem;
+  border:1px solid rgba(255,255,255,.3);
+  color:#fff;font-size:.9rem;line-height:1;
+}
+.social-links a:hover,.social-links a:focus-visible{background:rgba(255,255,255,.15);text-decoration:none}
+.social-icon{width:1em;height:1em;fill:currentColor;flex:none}
+
+.lang-switch{display:flex;gap:.5rem;margin-left:auto;align-self:flex-start}
 .lang-btn{border:1px solid rgba(255,255,255,.4);background:transparent;color:#fff;padding:.35rem .6rem;border-radius:.4rem;cursor:pointer}
 .lang-btn[aria-pressed="true"]{background:rgba(255,255,255,.15)}
 
@@ -67,4 +79,5 @@ h3 {
 @media (max-width:600px){
   .header-container{flex-direction:column;align-items:flex-start}
   .header-img{width:72px}
+  .lang-switch{margin-left:0}
 }
