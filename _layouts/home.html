@@ -1,0 +1,122 @@
+---
+layout: default
+---
+{%- assign t = site.data.ui[page.lang] -%}
+{%- assign me = site.data.profile -%}
+{%- assign empty_list = "" | split: "," -%}
+{%- assign news = site.data.news | default: empty_list -%}
+{%- assign travels = site.data.travels | default: empty_list -%}
+{%- assign projects = site.data.projects | default: empty_list -%}
+{%- assign ongoing = projects | where: "ongoing", true -%}
+{%- assign selected = site.data.publications | where: "selected", true -%}
+{%- if page.lang == "ja" -%}{%- assign root = "/ja" -%}{%- else -%}{%- assign root = "" -%}{%- endif -%}
+
+    <section id="about">
+      <h2>{{ t.about }}</h2>
+      <p>{{ me.about[page.lang] }}</p>
+      <p>{{ me.email }}</p>
+    </section>
+
+    {%- if news.size > 0 %}
+
+    <!-- お知らせ：最新5件を表示し、それより古いものは折りたたむ（_data/news.yml） -->
+    <section id="news">
+      <h2>{{ t.news }}</h2>
+      <ul class="dated-list">
+        {%- for item in news limit: 5 %}
+        <li><span class="date">{{ item.date }}</span><div>{{ item[page.lang] | default: item.en }}</div></li>
+        {%- endfor %}
+      </ul>
+      {%- if news.size > 5 %}
+      <details class="more">
+        <summary>{{ t.news_older }}</summary>
+        <ul class="dated-list">
+          {%- for item in news offset: 5 %}
+          <li><span class="date">{{ item.date }}</span><div>{{ item[page.lang] | default: item.en }}</div></li>
+          {%- endfor %}
+        </ul>
+      </details>
+      {%- endif %}
+    </section>
+    {%- endif %}
+
+    {%- if selected.size > 0 %}
+
+    <!-- 代表論文：_data/publications.yml で selected: true の論文 -->
+    <section id="selected-publications">
+      <h2>{{ t.selected }}</h2>
+      <ul class="publication-list">
+        {%- for type in site.data.pubtypes -%}
+          {%- include pub-items.html type=type.key prefix=type.prefix selected=true -%}
+        {%- endfor %}
+      </ul>
+      <p class="more-link"><a href="{{ '/publications/' | prepend: root | relative_url }}">{{ t.all_publications }} &rarr;</a></p>
+    </section>
+    {%- endif %}
+
+    {%- if ongoing.size > 0 %}
+
+    <!-- 進行中のプロジェクト：_data/projects.yml で ongoing: true のもの -->
+    <section id="ongoing-projects">
+      <h2>{{ t.projects_ongoing }}</h2>
+      <ul class="project-brief">
+        {%- for p in ongoing %}
+          {%- assign title = p.title -%}
+          {%- assign program = p.program -%}
+          {%- if page.lang == "ja" -%}
+            {%- if p.title_ja -%}{%- assign title = p.title_ja -%}{%- endif -%}
+            {%- if p.program_ja -%}{%- assign program = p.program_ja -%}{%- endif -%}
+          {%- endif %}
+        <li><strong>{{ title }}</strong><br><span class="meta">{{ program }}{% if p.period %}, {{ p.period }}{% endif %}</span></li>
+        {%- endfor %}
+      </ul>
+      <p class="more-link"><a href="{{ '/projects/' | prepend: root | relative_url }}">{{ t.all_projects }} &rarr;</a></p>
+    </section>
+    {%- endif %}
+
+    <!--
+      出張・学会参加予定（_data/travels.yml）。
+      data-end（最終日）を過ぎた項目は、下のスクリプトが「過去の予定」へ移す。
+    -->
+    <section id="travels">
+      <h2>{{ t.travels }}</h2>
+      <p>{{ t.travels_note }}</p>
+
+      <ul class="travel-list" id="travel-list">
+        {%- for item in travels %}
+        <li data-end="{{ item.end | date: '%Y-%m-%d' }}">{{ item[page.lang] | default: item.en }}</li>
+        {%- endfor %}
+      </ul>
+
+      <!-- 今後の予定が1件もないときだけ表示 -->
+      <p id="travel-empty"{% if travels.size > 0 %} hidden{% endif %}>{{ t.travels_empty }}</p>
+
+      <!-- 終了した予定が1件以上あるときだけ表示 -->
+      <details class="more" id="travel-archive" hidden>
+        <summary>{{ t.travels_past }}</summary>
+        <ul class="travel-list" id="travel-past"></ul>
+      </details>
+    </section>
+
+    <script>
+      (function () {
+        const upcoming = document.getElementById("travel-list");
+        const past = document.getElementById("travel-past");
+        const archive = document.getElementById("travel-archive");
+        const empty = document.getElementById("travel-empty");
+
+        // 閲覧者の現地日付を YYYY-MM-DD にする（文字列比較で前後を判定）
+        const d = new Date();
+        const pad = (n) => String(n).padStart(2, "0");
+        const today = d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate());
+
+        // 日程の早い順に並んでいるので、順に先頭へ足すと「新しい順」になる
+        for (const li of Array.from(upcoming.children)) {
+          const end = li.dataset.end;
+          if (end && end < today) past.prepend(li);
+        }
+
+        archive.hidden = past.children.length === 0;
+        empty.hidden = upcoming.children.length > 0;
+      })();
+    </script>

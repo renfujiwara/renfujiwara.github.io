@@ -1,0 +1,63 @@
+# 見出し・メニューなど、ページ共通の文言（言語ごと）
+en:
+  site_title: Ren Fujiwara's Homepage
+  description: Homepage of Ren Fujiwara, Assistant Professor at SANKEN, The University of Osaka.
+  nav_label: Site
+  nav:
+    home: Home
+    publications: Publications
+    projects: Projects
+    cv: CV
+  about: About Me
+  news: News
+  news_older: Older news
+  selected: Selected Publications
+  all_publications: All publications
+  publications: Publications
+  projects: Projects
+  projects_ongoing: Ongoing Projects
+  projects_completed: Completed Projects
+  projects_empty: No projects to show yet.
+  all_projects: All projects
+  history: Biography
+  awards: Awards & Fellowships
+  travels: Upcoming Travels
+  travels_note: Feel free to contact me if you would like to meet in person.
+  travels_empty: No upcoming travels at the moment.
+  travels_past: Past travels
+  links:
+    paper: paper
+    slides: slides
+    code: code and datasets
+    bib: bib
+ja:
+  site_title: 藤原 廉のホームページ
+  description: 藤原 廉（大阪大学産業科学研究所 助教）のホームページ
+  nav_label: サイト内メニュー
+  nav:
+    home: ホーム
+    publications: 業績
+    projects: プロジェクト
+    cv: 略歴
+  about: 自己紹介
+  news: お知らせ
+  news_older: 過去のお知らせ
+  selected: 代表論文
+  all_publications: すべての論文を見る
+  publications: 論文一覧
+  projects: プロジェクト
+  projects_ongoing: 進行中のプロジェクト
+  projects_completed: 終了したプロジェクト
+  projects_empty: 現在、掲載しているプロジェクトはありません。
+  all_projects: プロジェクト一覧を見る
+  history: 略歴
+  awards: 受賞・フェローシップ
+  travels: 出張・学会参加予定
+  travels_note: 現地でお会いできる方は、お気軽にご連絡ください。
+  travels_empty: 現在、予定はありません。
+  travels_past: 過去の予定
+  links:
+    paper: paper
+    slides: slides
+    code: code and datasets
+    bib: bib

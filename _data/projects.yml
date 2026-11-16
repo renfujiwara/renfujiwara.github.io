@@ -1,0 +1,24 @@
+# 外部資金などの研究プロジェクト。新しいものを一番上に追加してください。
+# 1件でも登録すると、メニューに「プロジェクト」が現れ、
+# ongoing: true のものはトップページにも表示されます。
+# （今は1件もないので、メニューにもトップページにも出ません）
+#
+#   title / title_ja:     課題名
+#   program / program_ja: 制度名（例: 科研費 若手研究）
+#   period:               期間（例: 2027/4 - 2030/3）
+#   role / role_ja:       役割（例: Principal Investigator / 研究代表者）
+#   summary / summary_ja: 概要（省略可）
+#   url:                  課題ページなどの URL（省略可）
+#   ongoing:              進行中なら true、終了したら false
+#
+# - title: Project title in English
+#   title_ja: 課題名
+#   program: JSPS KAKENHI Grant-in-Aid for Early-Career Scientists
+#   program_ja: 科研費 若手研究
+#   period: 2027/4 - 2030/3
+#   role: Principal Investigator
+#   role_ja: 研究代表者
+#   summary: One or two sentences about the project.
+#   summary_ja: プロジェクトの概要を1〜2文で。
+#   url: https://example.org/
+#   ongoing: true

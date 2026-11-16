@@ -1,0 +1,58 @@
+---
+layout: default
+---
+{%- assign t = site.data.ui[page.lang] -%}
+{%- assign empty_list = "" | split: "," -%}
+{%- assign projects = site.data.projects | default: empty_list -%}
+{%- assign ongoing = projects | where: "ongoing", true -%}
+{%- assign completed_size = projects.size | minus: ongoing.size -%}
+
+    <!-- プロジェクト：_data/projects.yml を「進行中」（ongoing: true）と「終了」（それ以外）に分けて表示 -->
+    {%- if projects.size == 0 %}
+    <section id="projects">
+      <h2>{{ t.projects }}</h2>
+      <p>{{ t.projects_empty }}</p>
+    </section>
+    {%- endif %}
+
+    {%- assign group_keys = "ongoing,completed" | split: "," -%}
+    {%- for key in group_keys -%}
+      {%- if key == "ongoing" -%}
+        {%- assign group_size = ongoing.size -%}
+        {%- assign heading = t.projects_ongoing -%}
+      {%- else -%}
+        {%- assign group_size = completed_size -%}
+        {%- assign heading = t.projects_completed -%}
+      {%- endif -%}
+      {%- if group_size == 0 -%}{%- continue -%}{%- endif %}
+
+    <section id="{{ key }}">
+      <h2>{{ heading }}</h2>
+      {%- for p in projects -%}
+        {%- if key == "ongoing" -%}
+          {%- unless p.ongoing == true -%}{%- continue -%}{%- endunless -%}
+        {%- else -%}
+          {%- if p.ongoing == true -%}{%- continue -%}{%- endif -%}
+        {%- endif -%}
+
+        {%- assign title = p.title -%}
+        {%- assign program = p.program -%}
+        {%- assign role = p.role -%}
+        {%- assign summary = p.summary -%}
+        {%- if page.lang == "ja" -%}
+          {%- if p.title_ja -%}{%- assign title = p.title_ja -%}{%- endif -%}
+          {%- if p.program_ja -%}{%- assign program = p.program_ja -%}{%- endif -%}
+          {%- if p.role_ja -%}{%- assign role = p.role_ja -%}{%- endif -%}
+          {%- if p.summary_ja -%}{%- assign summary = p.summary_ja -%}{%- endif -%}
+        {%- endif %}
+
+      <article class="project">
+        <h3>{% if p.url %}<a href="{{ p.url }}">{{ title }}</a>{% else %}{{ title }}{% endif %}</h3>
+        <p class="meta">{{ program }}{% if p.period %}, {{ p.period }}{% endif %}{% if role %} ({{ role }}){% endif %}</p>
+        {%- if summary %}
+        <p>{{ summary }}</p>
+        {%- endif %}
+      </article>
+      {%- endfor %}
+    </section>
+    {%- endfor %}

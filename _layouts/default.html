@@ -1,0 +1,109 @@
+{%- comment -%}
+  全ページ共通の外枠（ヘッダー・メニュー・フッター）。
+  各ページは front matter の lang（en / ja）で言語が決まります。
+{%- endcomment -%}
+{%- assign t = site.data.ui[page.lang] -%}
+{%- assign me = site.data.profile -%}
+{%- assign empty_list = "" | split: "," -%}
+{%- assign projects = site.data.projects | default: empty_list -%}
+{%- if page.lang == "ja" -%}
+  {%- assign root = "/ja" -%}
+  {%- assign en_url = page.url | remove_first: "/ja" -%}
+  {%- assign ja_url = page.url -%}
+{%- else -%}
+  {%- assign root = "" -%}
+  {%- assign en_url = page.url -%}
+  {%- assign ja_url = page.url | prepend: "/ja" -%}
+{%- endif -%}
+<!doctype html>
+<html lang="{{ page.lang }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page.layout == "home" %}{{ t.site_title }}{% else %}{{ t.nav[page.layout] }} | {{ me.name[page.lang] }}{% endif %}</title>
+  <meta name="description" content="{{ t.description }}">
+  <meta name="color-scheme" content="light dark">
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
+  <link rel="alternate" hreflang="en" href="{{ en_url | absolute_url }}">
+  <link rel="alternate" hreflang="ja" href="{{ ja_url | absolute_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="header-container">
+      <img
+        src="{{ '/assets/img/profile.webp' | relative_url }}"
+        alt="{{ me.name.en }}"
+        class="header-img"
+        width="96"
+        height="128"
+        decoding="async"
+        fetchpriority="high"
+      >
+
+      <div class="header-text">
+        <h1>{{ me.name[page.lang] }}</h1>
+
+        <!-- 外部プロフィールへのリンク（アイコンはインラインSVG、外部読み込みなし） -->
+        <nav class="social-links" aria-label="Profiles">
+          <a href="{{ me.links.researchmap }}" target="_blank" rel="noopener noreferrer">
+            <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M12 3 2 8l10 5 10-5-10-5z"/>
+              <path d="M6 10.8V15c0 1.7 2.7 3.5 6 3.5s6-1.8 6-3.5v-4.2l-6 3-6-3z"/>
+              <path d="M21 9v6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+            <span>researchmap</span>
+          </a>
+          <a href="{{ me.links.github }}" target="_blank" rel="noopener noreferrer">
+            <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <circle cx="6" cy="4" r="2.2"/>
+              <circle cx="6" cy="20" r="2.2"/>
+              <circle cx="18" cy="8" r="2.2"/>
+              <path d="M6 6.2v11.6M18 10.2c0 3.2-2.6 4.6-6 5.2-2.4.4-5 .9-6 2.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+            <span>GitHub</span>
+          </a>
+          <a href="{{ me.links.linkedin }}" target="_blank" rel="noopener noreferrer">
+            <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M9 4.5h6a1 1 0 0 1 1 1V7h3a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h3V5.5a1 1 0 0 1 1-1zm1 2.5h4V6.3h-4V7z"/>
+              <path d="M3 12.5h18" fill="none" stroke="var(--header)" stroke-width="1.4"/>
+            </svg>
+            <span>LinkedIn</span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- 言語切替：同じページの別言語版へのリンク（JavaScript 不要） -->
+      <nav class="lang-switch" aria-label="Language">
+        <a class="lang-btn" href="{{ en_url | relative_url }}" lang="en" hreflang="en"{% if page.lang == "en" %} aria-current="true"{% endif %}>English</a>
+        <a class="lang-btn" href="{{ ja_url | relative_url }}" lang="ja" hreflang="ja"{% if page.lang == "ja" %} aria-current="true"{% endif %}>日本語</a>
+      </nav>
+    </div>
+
+    <!-- サイト内メニュー：プロジェクトは _data/projects.yml に1件以上あるときだけ表示 -->
+    <nav class="site-nav" aria-label="{{ t.nav_label }}">
+      {%- assign nav_keys = "home,publications,projects,cv" | split: "," -%}
+      {%- for key in nav_keys -%}
+        {%- if key == "projects" and projects.size == 0 -%}{%- continue -%}{%- endif -%}
+        {%- if key == "home" -%}
+          {%- assign path = "/" -%}
+        {%- else -%}
+          {%- assign path = "/" | append: key | append: "/" -%}
+        {%- endif %}
+      <a href="{{ path | prepend: root | relative_url }}"{% if page.layout == key %} aria-current="page"{% endif %}>{{ t.nav[key] }}</a>
+      {%- endfor %}
+    </nav>
+  </header>
+
+  <main class="content">
+{{ content }}
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2024&ndash;{{ site.time | date: "%Y" }} Ren Fujiwara</p>
+  </footer>
+
+  {% include analytics.html %}
+</body>
+</html>

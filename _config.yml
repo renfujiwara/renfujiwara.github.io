@@ -1,0 +1,13 @@
+# サイト全体の設定（GitHub Pages が push のたびに Jekyll で自動ビルドします）
+title: Ren Fujiwara
+url: https://renfujiwara.github.io
+baseurl: ""
+
+google_analytics: G-5BZ2PWSCZK
+
+# 公開サイトに含めないファイル
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor

@@ -1,0 +1,114 @@
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#f4f4f9;--text:#333;--muted:rgba(0,0,0,.6);--line:rgba(0,0,0,.08);--link:#007bff;--header:#2d3e50;--max:800px}
+/* 内容が短いページでもフッターが画面の下端に来るよう、縦方向の flex にする */
+body{font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif;line-height:1.6;color:var(--text);background:var(--bg);min-height:100vh;display:flex;flex-direction:column}
+a{text-decoration:none;color:var(--link)}
+a:hover{text-decoration:underline}
+
+/* ---------- ヘッダー ---------- */
+.site-header{background:var(--header);color:#fff;border-bottom:1px solid rgba(255,255,255,.15)}
+.header-container{display:flex;align-items:center;gap:1rem;max-width:1000px;margin:0 auto;padding:1rem 1rem .75rem}
+.header-img{
+  width:96px;
+  height:auto;
+  aspect-ratio:3/4;
+  object-fit:cover;
+  border-radius:60%;
+  border:2px solid rgba(255,255,255,.35);
+}
+.header-text h1{font-size:1.5rem}
+
+/* ヘッダー内の外部プロフィールリンク（GitHub / LinkedIn / researchmap） */
+.social-links{display:flex;flex-wrap:wrap;gap:.4rem .6rem;margin-top:.5rem}
+.social-links a{
+  display:inline-flex;align-items:center;gap:.35rem;
+  padding:.3rem .6rem;border-radius:.4rem;
+  border:1px solid rgba(255,255,255,.3);
+  color:#fff;font-size:.9rem;line-height:1;
+}
+.social-links a:hover,.social-links a:focus-visible{background:rgba(255,255,255,.15);text-decoration:none}
+.social-icon{width:1em;height:1em;fill:currentColor;flex:none}
+
+/* 言語切替（別言語版ページへのリンク） */
+.lang-switch{display:flex;gap:.5rem;margin-left:auto;align-self:flex-start}
+.lang-btn{border:1px solid rgba(255,255,255,.4);color:#fff;padding:.35rem .6rem;border-radius:.4rem;font-size:.85rem;line-height:1.4}
+.lang-btn:hover,.lang-btn:focus-visible{background:rgba(255,255,255,.15);text-decoration:none}
+.lang-btn[aria-current="true"]{background:rgba(255,255,255,.15)}
+
+/* サイト内メニュー */
+.site-nav{display:flex;flex-wrap:wrap;gap:0 .25rem;max-width:1000px;margin:0 auto;padding:0 1rem}
+.site-nav a{color:rgba(255,255,255,.8);padding:.45rem .7rem;border-bottom:3px solid transparent}
+.site-nav a:hover,.site-nav a:focus-visible{color:#fff;text-decoration:none;border-bottom-color:rgba(255,255,255,.4)}
+.site-nav a[aria-current="page"]{color:#fff;font-weight:600;border-bottom-color:#fff}
+
+/* ---------- 本文 ---------- */
+.content{flex:1;width:100%;max-width:var(--max);margin:0 auto;padding:0 1rem}
+
+section{padding:1.25rem 0;border-bottom:1px solid var(--line)}
+section:last-of-type{border-bottom:none}
+section p + p{margin-top:.5rem}
+
+h2 {
+  color: var(--text);
+  font-size: 1.6rem; /* 大きめ */
+  border-bottom: 2px solid rgba(0,0,0,0.6); /* 太い下線 */
+  padding-bottom: 0.25rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  color: var(--text);
+  font-size: 1.25rem; /* h2より少し小さく */
+  border-bottom: 1px solid rgba(0,0,0,0.3); /* 下線を細く、薄くする */
+  padding-bottom: 0.1rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+/* 論文リスト */
+.publication-list{list-style:none}
+.publication-list li{margin-bottom:1.5rem}
+.publication-list li:last-child{margin-bottom:.5rem}
+
+/* 日付 + 本文の2カラム（お知らせ・略歴・受賞） */
+.dated-list{list-style:none}
+.dated-list li{display:flex;gap:1rem;padding:.45rem 0}
+.dated-list li + li{border-top:1px solid var(--line)}
+.dated-list .date{flex:none;width:4.5em;font-variant-numeric:tabular-nums;color:var(--muted)}
+.dated-list.wide .date{width:9.5em}
+.dated-list div{flex:1;min-width:0}
+
+/* 折りたたみ（過去のお知らせ・過去の予定） */
+.more{margin-top:.5rem}
+.more summary{cursor:pointer;color:var(--link);width:fit-content}
+.more summary:hover{text-decoration:underline}
+.more .dated-list{margin-top:.25rem;border-top:1px solid var(--line)}
+.more .travel-list{margin-top:.4rem;color:var(--muted)}
+
+/* 「すべて見る」リンク */
+.more-link{margin-top:.75rem}
+
+/* 出張・学会参加予定 */
+.travel-list{list-style:none;margin-top:.5rem}
+.travel-list li{padding:.15rem 0}
+#travel-empty{margin-top:.5rem}
+
+/* プロジェクト */
+.project + .project{margin-top:1.5rem}
+.project h3{border-bottom:none;margin-bottom:.1rem}
+.meta{color:var(--muted)}
+.project-brief{list-style:none}
+.project-brief li + li{margin-top:.75rem}
+
+/* ---------- フッター ---------- */
+.site-footer{text-align:center;padding:1rem 0;margin-top:1rem;background:var(--header);color:#fff}
+.site-footer a{color:#fff;margin:0 .5rem}
+
+@media (max-width:600px){
+  .header-container{flex-direction:column;align-items:flex-start}
+  .header-img{width:72px}
+  .lang-switch{margin-left:0}
+  .dated-list.wide li{flex-direction:column;gap:0}
+  .dated-list.wide .date{width:auto}
+}

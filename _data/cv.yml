@@ -1,0 +1,42 @@
+# 略歴ページの内容。どちらも新しいものを上に書きます。
+# en を省略した項目は日本語ページだけに、ja を省略した項目は英語ページだけに表示されます。
+# period の「present」は、日本語ページでは自動的に「現在」と表示されます。
+
+history:
+  - period: 2026/11 - present
+    en: Assistant Professor, Department of Translational Datability, SANKEN, The University of Osaka.
+    ja: 大阪大学産業科学研究所 トランスレーショナルデータビリティ研究分野 助教
+  - period: 2026/4 - 2026/10
+    en: Specially Appointed Assistant Professor, Department of Translational Datability, SANKEN, The University of Osaka.
+    ja: 大阪大学産業科学研究所 トランスレーショナルデータビリティ研究分野 特任助教
+  - period: 2024/4 - 2026/3
+    en: "JSPS research fellow, DC2, (Supervisor: Prof. Yasushi Sakurai)"
+    ja: 日本学術振興会特別研究員 DC2
+  - period: 2023/4 - 2026/3
+    en: "Ph.D student, Graduate School of Information Science and Technology, Information Systems Engineering, The University of Osaka (Supervisor: Prof. Yasushi Sakurai)."
+    ja: 大阪大学大学院 情報科学研究科 情報システム工学専攻 博士後期課程.
+  - period: 2021/4 - 2023/3
+    en: "Master's student, Graduate School of Information Science and Technology, Information Systems Engineering, The University of Osaka (Supervisor: Prof. Masanori Hashimoto)."
+    ja: 大阪大学大学院 情報科学研究科 情報システム工学専攻 博士前期課程 修了.
+  - period: 2021/8 - 2026/3
+    ja: 大阪大学産業科学研究所 トランスレーショナルデータビリティ研究分野 特任研究員
+  - period: 2017/4 - 2021/3
+    en: Bachelor's student, Department of Information and Computer Sciences, School of Engineering Science, The University of Osaka.
+    ja: 大阪大学 基礎工学部 情報科学科 卒業.
+  - period: 2013/4 - 2016/3
+    ja: 大阪府立高津高等学校 文理学科 卒業.
+
+awards:
+  - period: 2024/3
+    ja: DEIM2024 優秀論文賞
+  - period: 2023/4 - 2024/3
+    en: Osaka University fellowship for cross-disciplinary innovation
+    ja: 分野横断イノベーションを創造する情報人材育成フェローシップ
+  - period: 2023/7
+    en: Japan Student Services Organization (JASSO) Student Loan, Exemption
+    ja: JASSO 特に優れた業績による返還免除
+  - period: 2023/3
+    ja: DEIM2023 学生プレゼンテーション賞
+  - period: 2022/10
+    en: SIGIR student travel grants for CIKM 2022
+    ja: SIGIR student travel grants for CIKM 2022

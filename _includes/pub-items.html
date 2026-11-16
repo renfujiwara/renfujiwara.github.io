@@ -1,0 +1,43 @@
+{%- comment -%}
+  ある種別の論文を <li> として出力する。
+    type:     種別の key（conference など）
+    prefix:   番号の頭文字（C など）
+    selected: true のとき、selected: true の論文だけを出力する
+  番号は種別内の並び順から自動で決まる（一番下が 1）。
+{%- endcomment -%}
+{%- assign t = site.data.ui[page.lang] -%}
+{%- assign items = site.data.publications | where: "type", include.type -%}
+{%- assign link_keys = "paper,slides,code,bib" | split: "," -%}
+{%- for pub in items -%}
+  {%- if include.selected and pub.selected != true -%}{%- continue -%}{%- endif -%}
+
+  {%- assign title = pub.title -%}
+  {%- assign authors = pub.authors -%}
+  {%- assign venue = pub.venue -%}
+  {%- if page.lang == "ja" -%}
+    {%- if pub.title_ja -%}{%- assign title = pub.title_ja -%}{%- endif -%}
+    {%- if pub.authors_ja -%}{%- assign authors = pub.authors_ja -%}{%- endif -%}
+    {%- if pub.venue_ja -%}{%- assign venue = pub.venue_ja -%}{%- endif -%}
+  {%- endif -%}
+
+  {%- for name in site.data.profile.author_names -%}
+    {%- assign underlined = name | prepend: "<u>" | append: "</u>" -%}
+    {%- assign authors = authors | replace: name, underlined -%}
+  {%- endfor -%}
+
+  {%- capture links -%}
+    {%- for key in link_keys -%}
+      {%- if pub[key] -%}<a href="{{ pub[key] }}">{{ t.links[key] }}</a>@@{%- endif -%}
+    {%- endfor -%}
+  {%- endcapture -%}
+  {%- assign links = links | split: "@@" %}
+<li>
+  <span class="pub-id">[{{ include.prefix }}{{ items.size | minus: forloop.index0 }}]</span>
+  <strong>{{ title }}</strong><br>
+  {{ authors }}<br>
+  <span class="conf">{{ venue }}</span>
+  {%- if links.size > 0 %}<br>
+  [ {{ links | join: " | " }} ]
+  {%- endif %}
+</li>
+{%- endfor -%}

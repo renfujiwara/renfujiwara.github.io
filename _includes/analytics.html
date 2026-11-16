@@ -1,0 +1,33 @@
+{%- if site.google_analytics -%}
+<!-- Google Analytics: 初期描画を優先するため末尾で遅延ロード -->
+<script>
+  (function () {
+    const GA_ID = "{{ site.google_analytics }}";
+    const ORIGIN = "https://www.googletagmanager.com";
+
+    // 3rd-party 接続を事前に確立（DNS/TLS）
+    const preconnect = document.createElement("link");
+    preconnect.rel = "preconnect";
+    preconnect.href = ORIGIN;
+    document.head.appendChild(preconnect);
+
+    function loadGA() {
+      const s = document.createElement("script");
+      s.async = true;
+      s.src = ORIGIN + "/gtag/js?id=" + encodeURIComponent(GA_ID);
+      document.head.appendChild(s);
+
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function(){ dataLayer.push(arguments); };
+      gtag("js", new Date());
+      gtag("config", GA_ID, { anonymize_ip: true });
+    }
+
+    if ("requestIdleCallback" in window) {
+      requestIdleCallback(loadGA, { timeout: 2000 });
+    } else {
+      setTimeout(loadGA, 1500);
+    }
+  })();
+</script>
+{%- endif -%}

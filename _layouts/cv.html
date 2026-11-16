@@ -1,0 +1,21 @@
+---
+layout: default
+---
+{%- assign t = site.data.ui[page.lang] -%}
+
+    <!-- 略歴・受賞：_data/cv.yml。その言語の文言がない項目は表示しない -->
+    {%- assign section_keys = "history,awards" | split: "," -%}
+    {%- for key in section_keys %}
+
+    <section id="{{ key }}">
+      <h2>{{ t[key] }}</h2>
+      <ul class="dated-list wide">
+        {%- for item in site.data.cv[key] -%}
+          {%- unless item[page.lang] -%}{%- continue -%}{%- endunless -%}
+          {%- assign period = item.period -%}
+          {%- if page.lang == "ja" -%}{%- assign period = period | replace: "present", "現在" -%}{%- endif %}
+        <li><span class="date">{{ period }}</span> <div>{{ item[page.lang] }}</div></li>
+        {%- endfor %}
+      </ul>
+    </section>
+    {%- endfor %}

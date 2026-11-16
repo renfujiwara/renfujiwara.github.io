@@ -1,0 +1,14 @@
+# 論文の種別。この順番で業績ページに並びます。
+# 該当する論文が1本もない種別は、見出しごと表示されません。
+- key: conference
+  prefix: C
+  en: Conference Papers
+  ja: 国際会議論文
+- key: journal
+  prefix: J
+  en: Journal Papers
+  ja: 国際論文誌
+- key: domestic
+  prefix: D
+  en: Domestic Journals
+  ja: 国内論文誌
